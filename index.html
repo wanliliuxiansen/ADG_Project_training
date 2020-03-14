@@ -1,0 +1,134 @@
+<!DOCTYPE html>  
+<html>  
+  <head>  
+    <meta charset="utf-8">  
+	<style>
+	#header {
+		background-color:black;
+		color:white;
+		text-align:center;
+		padding:5px;
+	}
+	#nav {
+		line-height:50px;
+		background-color:#eeeeee;
+		height: 450px;
+		width:15%;
+		float:left;	      
+		overflow: hidden;
+	}
+	#section {
+		width:350px;
+		float:left;
+		padding:7px;	 	 
+	}
+	#huidu{
+		float: left;
+		text-align: center;
+		width: 32%;
+		height: 97%;
+		margin-right: 1px;
+		border: 1px solid black;
+		overflow: hidden;
+		
+	}
+	#caise{
+		float: left;
+		width: 32%;
+		height: 97%;
+		margin-left:2px; 
+		margin-right: 2px;
+		border: 1px solid black;
+		overflow: hidden;
+	}
+	#L2{
+		float: left;
+		width: 30%;
+		height: 97%;
+		margin-left:2px; 
+		margin-right: 2px;
+		border: 1px solid black;
+		overflow: hidden;
+	}
+	#xianshi{
+		float: left;
+		background-color:#eeeeee;
+		text-align: center;
+		width: 85%;
+		height: 450px;
+		vertical-align:middle;
+	}
+	#footer {
+		background-color:black;
+		color:white;
+		clear:both;
+		text-align:center;
+	    padding:7px;	 	 
+	}
+	</style>	
+	
+	<script language="javascript"> 
+		function exec1(command) 
+		{    
+			var ws = new ActiveXObject("WScript.Shell");      
+			ws.run('cmd.exe /k python D:/project/cs3.py D:/project/image/'+command);           //exec 和 run
+			ws = null;            //弹出一个小框显示“ok”
+		} ;
+		window.onload=function(){ 
+				document.getElementById("run").onclick= function(){
+			    	var resultFile = document.getElementById("file").files[0];
+			    	var urlData = resultFile.name.toString()
+			    	exec1(urlData)
+
+			    };
+				document.getElementById("daoru").onclick= function() {
+		            var resultFile = document.getElementById("file").files[0];
+		            var urlData = resultFile.name.toString()
+		            if (resultFile) {               
+		                document.getElementById("huidu1").innerHTML = "<img src= 'D:/project/image/"+ urlData +"' " + "alt=" + resultFile.name + " />";
+		                
+		            };
+		        };
+		        document.getElementById("daochu1").onclick= function() {
+		            var resultFile = document.getElementById("file").files[0];
+		            var urlData = resultFile.name.toString()
+		            if (resultFile) {               
+		                document.getElementById("caise1").innerHTML = "<img src='D:/project/col/color_"+ urlData +"'' " +"alt=" + resultFile.name + " />";
+		                
+		            };
+		        }
+		}    
+	
+	</script>   
+  </head>  
+  
+<body>
+	<div id="header">
+	<h1>黑白图片智能上色</h1>
+	</div>
+	<div class="dakuang">
+	<div id="nav">
+		<input type="file" id="file" accept=".jpg, .jpeg, .png" />
+		<img src="demo.gif" width="220" height="200" />
+		<input id="run" type="button" value="上色" />  
+	</div>
+	<div id="xianshi" class="xianshi">
+		
+		<div id="huidu" class="huidu">
+			<input id="daoru" type="button" value="导入要上色的图片" />
+			<div id="huidu1">
+				
+			</div>
+		</div>
+		
+		<div id="caise" class="caise">
+			<input id="daochu1" type="button" value="导出上色后图片"/>
+			<div id="caise1">
+				
+			</div>
+		</div>
+	</div>
+	</div>
+	
+</body> 
+</html> 
